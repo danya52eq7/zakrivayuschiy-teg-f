@@ -2,24 +2,29 @@
   display: grid;
   justify-content: center;
   padding-block: 100px;
-  font-family: var(--primary-font-family), sans-serif;
-  background-image: var(--gradient);
+  font-family: var(--primary-font-family), Arial, sans-serif;
+  background-image: 
+    var(--gradient,
+    repeating-linear-gradient(to right, #d3d3d3 0 2px, rgb(211 211 211 / 0) 2px 4px),
+    repeating-linear-gradient(#d3d3d3 0 2px, rgb(211 211 211 / 0) 2px 4px),
+    linear-gradient(#e7e7e7 .01%, #1a1a1a));
   background-size: cover;
+  background-attachment: fixed;
   min-inline-size: 320px;
   min-block-size: 100dvb;
-  font-variation-settings: 'wght' var(--primary-font-weight);
+  font-variation-settings: 'wght' var(--primary-font-weight, 400);
 }
 
 .content {
-  background-color: var(--primary-color);
-  inline-size: var(--content-inline-size);
+  background-color: var(--primary-color, #fff);
+  inline-size: var(--content-inline-size, clamp(23.438rem, 16.2859rem + 30.5157vw, 43.75rem));
 }
 
 .header  {
   margin-block-end: 100px;
-  border: var(--border);
+  border: var(--border, 2px solid var(--accent-color, #000));
   padding: clamp(7.5rem, 7.3239rem + 0.7512vw, 8rem) clamp(0.875rem, -1.4687rem + 9.9996vw, 7.531rem);
-  font-family: var(--accent-font-family), sans-serif;
+  font-family: var(--accent-font-family), Arial, sans-serif;
   text-transform: uppercase;
 }
 
@@ -42,59 +47,60 @@
 .card {
   display: grid;
   margin-block-end: 50px;
-  border: var(--border);
+  border: var(--border, 2px solid var(--accent-color, #000));
   font-size: 18px;
 }
 
 .card__headline {
-  border-block-end: var(--border);
   padding: var(--card-headline-padding);
   font-size: inherit;
   line-height: 21.78px;
-  font-variation-settings: 'wght' var(--card-headline-font-weight);
+  font-variation-settings: 'wght' var(--card-headline-font-weight, 700);
 }
 
 .card__image-block {
   position: relative;
+  display: flex;
+  border-block: var(--border, 2px solid var(--accent-color, #000));
+  aspect-ratio: 1 / 1;
 }
 
 .image {
-  border-block-end: var(--border);
-  object-fit: fill;
+  object-fit: cover;
   inline-size: 100%;
   max-inline-size: 100%;
-  block-size: var(--image-block-size);
+  max-block-size: 100%;
 }
 
-.image-0-sprint {
+.filter-hue-rotate-saturate {
   filter: hue-rotate(-74deg) saturate(5.5);
 }
 
-.image-1-sprint-start {
+.filter-invert {
   filter: invert(1);
 }
 
-.image-1-sprint-end {
+.filter-brightness {
   filter: brightness(1.4);
 }
 
-.image-2-sprint-start {
+.filter-contrast-saturate {
   filter: contrast(5.5) saturate(13);
 }
 
-.image-2-sprint-end {
+.filter-grayscale {
   filter: grayscale(1);
 }
 
-.image-3-sprint-start {
+.filter-hue-rotate-brightness-saturate {
   filter: hue-rotate(39deg) brightness(0.75) saturate(7.5);
 }
 
-.image-3-sprint-end {
+.filter-brightness-saturate-hue-rotate-contrast {
   filter: brightness(2) saturate(9.5) hue-rotate(28deg) contrast(1.5);
 }
 
-.image-now {
+.filter-brightness-contrast-sepia {
   filter: brightness(70%) contrast(99%) sepia(1);
 }
 
@@ -102,121 +108,53 @@
   position: absolute;
   top: var(--image-tag-top);
   right: var(--image-tag-right);
-  font-family: var(--accent-font-family), sans-serif;
+  font-family: var(--accent-font-family), Arial, sans-serif;
   font-size: 14px;
-  text-shadow: -1px 0 var(--primary-color), 0 1px var(--primary-color), 1px 0 var(--primary-color), 0 -1px var(--primary-color);
+  text-shadow: -1px 0 var(--primary-color, #fff), 0 1px var(--primary-color, #fff), 1px 0 var(--primary-color, #fff), 0 -1px var(--primary-color, #fff);
   mix-blend-mode: hard-light;
 }
 
-@supports((text-stroke: 1px var(--primary-color)) or (-webkit-text-stroke: 1px var(--primary-color))) {
+@supports((text-stroke: 1px var(--primary-color, #fff)) or (-webkit-text-stroke: 1px var(--primary-color, #fff))) {
   .image-tag {
     text-shadow: none;
-    -webkit-text-stroke: 1px var(--primary-color);
-    text-stroke: 1px var(--primary-color);
+    -webkit-text-stroke: 1px var(--primary-color, #fff);
+    text-stroke: 1px var(--primary-color, #fff);
   }
 } 
 
 .card__text-block {
   display: grid;
   row-gap: 27px;
-  padding-inline: var(--card-padding);
-  padding-block: var(--card-padding);
-}
-
-.paragraph {
-  text-shadow:
-    -2px -2px 2px #d3d3d3,
-    2px -2px 2px #e7e7e7,
-    2px 2px 2px #d3d3d3,
-    -2px 2px 2px #e7e7e7;
+  padding-inline: var(--card-padding, 25px);
+  padding-block: var(--card-padding, 25px);
 }
 
 .card__button-block {
   display: flex;
   justify-self: end;
   gap: 9px;
-  padding-inline-end: var(--card-padding);
-  padding-block-end: var(--card-padding);
+  padding-inline-end: var(--card-padding, 25px);
+  padding-block-end: var(--card-padding, 25px);
 }
 
 .card__icon-button {
   border: none;
   padding: 0;
-  background-color: var(--primary-color);
-  max-block-size: 36px;
+  background-color: var(--primary-color, #fff);
 }
 
 .card__icon-button:focus {
   outline: none;
 }
 
-.card__icon-button:focus-visible {
-  outline: var(--border);
-  transition: outline .3s ease;
-}
-
-.contour {
-  fill: var(--accent-color);
-  transition: fill .1s linear;
-}
-
-.main-body {
-  fill: var(--primary-color);
-  transition: fill .3s;
-}
-
-.core {
-  fill: var(--primary-color);
-  transition: fill .3s .03s;
-}
-
-.sparks {
-  opacity: 0;
-}
-
 .like-icon:hover {
   cursor: pointer;
 }
 
-.like-icon:hover .main-body {
-  fill: var(--accent-color);
-  transition: fill .3s .05s;
-}
-
-.like-icon:hover .core {
-  fill: var(--accent-color);
-  transition: fill .3s;
-}
-
-.like-icon:active .main-body {
-  fill: var(--fill-color);
-  transition: fill .3s .05s;
-}
-
-.like-icon:active .core {
-  fill: var(--fill-color);
-  transition: fill .3s;
-}
-
-.like-icon.is-liked .contour {
-  fill: var(--fill-color);
-  transition: fill .3s .06s;
-}
-
-.like-icon.is-liked .main-body {
-  fill: var(--fill-color);
-  transition: fill .3s .05s;
-}
-
-.like-icon.is-liked .core {
-  fill: var(--fill-color);
-  transition: fill .3s;
-}
-
 .basic-button {
   position: relative;
-  border: var(--border);
-  background-color: var(--primary-color);
+  border: var(--border, 2px solid var(--accent-color, #000));
+  background-color: var(--primary-color, #fff);
 }
 
 .basic-button:focus {
@@ -224,34 +162,18 @@
 }
 
 .basic-button:focus-visible {
-  box-shadow: 2px 2px 0 0 var(--accent-color);
   outline: none;
-  transition: box-shadow .3s;
 }
 
 .basic-button:hover {
   cursor: pointer;
 }
 
-.basic-button::after {
-  content:'';
-  position: absolute;
-  inset: 0;
-  background-color: var(--accent-color);
-  transition: transform .5s ease-in-out;
-  transform: scaleX(0);
-  transform-origin: left;
-}
-
-.basic-button:hover::after {
-  transform: scaleX(1);
-}
-
 .button__text {
   position: relative;
   z-index: 1;
-  color: var(--primary-color);
-  font-family: var(--accent-font-family), sans-serif;
+  color: var(--primary-color, #fff);
+  font-family: var(--accent-font-family), Arial, sans-serif;
   font-size: 14px;
   line-height: 12.6px;
   mix-blend-mode: difference;
@@ -278,39 +200,40 @@
 
 .save-button .floppy-icon {
   z-index: 1;
-  stroke: var(--primary-color);
+  stroke: var(--primary-color, #fff);
   inline-size: var(--floppy-icon-save-button-size);
   mix-blend-mode: difference;
 }
 
-.disketa {
-  grid-template-columns: var(--disketa-grid-template-columns);
+.dialog {
+  grid-template-columns: var(--dialog-grid-template-columns);
   align-items: center;
   row-gap: 27px;
   column-gap: 20px;
-  padding-inline: var(--disketa-padding-inline);
+  padding-inline: var(--dialog-padding-inline);
   padding-block: 30px;
 }
 
-.disketa[open] {
+.dialog[open] {
   display: grid;
 }
 
-.disketa::backdrop {
+.dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.75);
 }
 
-.disketa__text {
-  font-family: var(--accent-font-family), sans-serif;
+.dialog__text {
+  font-family: var(--accent-font-family), Arial, sans-serif;
   font-size: 14px;
   line-height: 21px;
   text-transform: uppercase;
 }
 
-.disketa__button {
+.dialog__button {
   grid-column: 1/3;
-  padding-inline: var(--disketa-button-padding-inline);
+  padding-inline: var(--dialog-button-padding-inline);
   padding-block: 7.5px;
+  text-transform: uppercase;
 }
 
 @media (width <= 375px) {
@@ -319,7 +242,7 @@
     align-items: center;
   }
 
-  .disketa .floppy-icon {
+  .dialog .floppy-icon {
     inline-size: 40px;
   }
 }

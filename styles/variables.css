@@ -1,6 +1,6 @@
 :root {
-  --primary-font-family: 'Inter-Variable';
-  --accent-font-family: 'Press Start 2P';
+  --primary-font-family: 'Inter-Variable', Arial, sans-serif;
+  --accent-font-family: 'Press Start 2P', Arial, sans-serif;
   --primary-font-weight: 400;
   --card-headline-font-weight: 700;
   --primary-color: #fff;
@@ -13,32 +13,30 @@
   --content-inline-size: clamp(23.438rem, 16.2859rem + 30.5157vw, 43.75rem);
   --border: 2px solid var(--accent-color);
   --card-padding: 25px;
-  --card-headline-padding: 3px 24px 3px 10px;
-  --image-block-size: 698px;
+  --card-headline-padding: 3px 24px 7px 10px;
   --image-tag-top: var(--card-padding);
   --image-tag-right: var(--card-padding);
   --floppy-icon-save-button-size: 21px;
-  --disketa-padding-inline: 30px;
-  --disketa-grid-template-columns: 39px fit-content(230px);
-  --disketa-button-padding-inline: 130.5px; 
+  --dialog-padding-inline: 30px;
+  --dialog-grid-template-columns: 39px fit-content(230px);
+  --dialog-button-padding-inline: 130.5px; 
 }
 
 @media (width <= 375px) {
   :root {
     --content-inline-size: 100dvi;
     --card-headline-padding: 3.5px 10px 5.5px;
-    --image-block-size: 373px;
     --image-tag-top: 23px;
     --image-tag-right: 11px;
     --floppy-icon-save-button-size: 28px;
-    --disketa-padding-inline: 40px;
-    --disketa-grid-template-columns: min-content fit-content(198px);
-    --disketa-button-padding-inline: 112.5px;
+    --dialog-padding-inline: 40px;
+    --dialog-grid-template-columns: min-content fit-content(198px);
+    --dialog-button-padding-inline: 112.5px;
   }
 }
 
 @media (width < 375px) {
   :root {
-    --disketa-padding-inline: 9.7px;
+    --dialog-padding-inline: 9.7px;
   }
 }
