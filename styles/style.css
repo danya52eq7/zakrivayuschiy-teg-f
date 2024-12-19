@@ -141,6 +141,8 @@
   border: none;
   padding: 0;
   background-color: var(--primary-color, #fff);
+  display: flex;
+  align-items: center;
 }
 
 .card__icon-button:focus {
@@ -185,6 +187,8 @@
   padding-inline: 35px;
   padding-block: 10.5px;
   max-inline-size: 130px;
+  scale: 1 1.08;
+  translate: 0 -0.5px;
 }
 
 .save-button {
